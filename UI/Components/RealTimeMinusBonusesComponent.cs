@@ -1,4 +1,4 @@
-﻿using LiveSplit.ManualGameTime.UI.Components;
+﻿using LiveSplit.RealTimeMinusBonuses.UI.Components;
 using LiveSplit.Model;
 using System;
 using System.Drawing;
@@ -6,20 +6,20 @@ using System.Windows.Forms;
 
 namespace LiveSplit.UI.Components
 {
-    public class ManualGameTimeComponent : LogicComponent
+    public class RealTimeMinusBonusesComponent : LogicComponent
     {
-        public ManualGameTimeSettings Settings { get; set; }
+        public RealTimeMinusBonusesSettings Settings { get; set; }
 
         public GraphicsCache Cache { get; set; }
         protected LiveSplitState CurrentState { get; set; }
         public Form GameTimeForm { get; set; }
-        protected Point PreviousLocation { get; set; } 
+        protected Point PreviousLocation { get; set; }
 
-        public override string ComponentName => "Manual Game Time";
+        public override string ComponentName => "Real Time Minus Bonuses (proof-of-concept)";
 
-        public ManualGameTimeComponent(LiveSplitState state)
+        public RealTimeMinusBonusesComponent(LiveSplitState state)
         {
-            Settings = new ManualGameTimeSettings();
+            Settings = new RealTimeMinusBonusesSettings();
             GameTimeForm = new ShitSplitter(state, Settings);
             state.OnStart += state_OnStart;
             state.OnReset += state_OnReset;

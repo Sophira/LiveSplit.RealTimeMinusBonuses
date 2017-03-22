@@ -1,6 +1,6 @@
 ﻿namespace LiveSplit.UI.Components
 {
-    partial class ManualGameTimeSettings
+    partial class RealTimeMinusBonusesSettings
     {
         /// <summary> 
         /// Required designer variable.
@@ -110,12 +110,12 @@
             this.rdoSplitTimes.Text = "Split Times";
             this.rdoSplitTimes.UseVisualStyleBackColor = true;
             // 
-            // ManualGameTimeSettings
+            // RealTimeMinusBonusesSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "ManualGameTimeSettings";
+            this.Name = "RealTimeMinusBonusesSettings";
             this.Padding = new System.Windows.Forms.Padding(7);
             this.Size = new System.Drawing.Size(476, 63);
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -3,26 +3,26 @@ using LiveSplit.Model;
 using LiveSplit.UI.Components;
 using System;
 
-[assembly: ComponentFactory(typeof(ManualGameTimeFactory))]
+[assembly: ComponentFactory(typeof(RealTimeMinusBonusesFactory))]
 
 namespace LiveSplit.Delta
 {
-    public class ManualGameTimeFactory : IComponentFactory
+    public class RealTimeMinusBonusesFactory : IComponentFactory
     {
-        public string ComponentName => "Manual Game Time";
+        public string ComponentName => "Real Time Minus Bonuses (proof-of-concept)";
 
-        public string Description => "Allows manually entering segment times as game time.";
+        public string Description => "Subtract IGT time bonuses from an RTA run.";
 
         public ComponentCategory Category => ComponentCategory.Control;
 
-        public IComponent Create(LiveSplitState state) => new ManualGameTimeComponent(state);
+        public IComponent Create(LiveSplitState state) => new RealTimeMinusBonusesComponent(state);
 
         public string UpdateName => ComponentName;
 
-        public string XMLURL => "http://livesplit.org/update/Components/update.LiveSplit.ManualGameTime.xml";
+        public string UpdateURL => "https://raw.githubusercontent.com/Sophira/LiveSplit.RealTimeMinusBonuses/master/";
 
-        public string UpdateURL => "http://livesplit.org/update/";
+        public string XMLURL => UpdateURL + "Components/update.LiveSplit.RealTimeMinusBonuses.xml";
 
-        public Version Version => Version.Parse("1.6.3");
+        public Version Version => Version.Parse("0.1");
     }
 }

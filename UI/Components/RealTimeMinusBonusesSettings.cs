@@ -3,11 +3,11 @@ using System.Xml;
 
 namespace LiveSplit.UI.Components
 {
-    public partial class ManualGameTimeSettings : UserControl
+    public partial class RealTimeMinusBonusesSettings : UserControl
     {
         public bool UseSegmentTimes { get; set; }
 
-        public ManualGameTimeSettings()
+        public RealTimeMinusBonusesSettings()
         {
             InitializeComponent();
 
