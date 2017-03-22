@@ -1,4 +1,5 @@
-==Real Time Minus Bonuses component for LiveSplit==
+Real Time Minus Bonuses component for LiveSplit
+===============================================
 
 **WARNING: Please do not solely rely on this component for real timing yet! It's
 currently only a proof-of-concept, is likely to be buggy, has not been tested
