@@ -16,13 +16,13 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
         {
             InitializeComponent();
             lookup = new Dictionary<int, double>();
-            lookup.Add(60000, 500 / 60.0);   // 50000
-            lookup.Add(90000, 100 / 60.0);   // 10000
-            lookup.Add(120000, 50 / 60.0);   // 5000
-            lookup.Add(150000, 40 / 60.0);   // 4000
-            lookup.Add(180000, 30 / 60.0);   // 3000
-            lookup.Add(210000, 10 / 60.0);   // 1000
-            lookup.Add(599000, 1 / 60.0);   // 100
+            lookup.Add(60000, 500 / 60.0);     // 50000
+            lookup.Add(90000, 100 / 60.0);     // 10000
+            lookup.Add(120000, 50 / 60.0);     // 5000
+            lookup.Add(150000, 40 / 60.0);     // 4000
+            lookup.Add(180000, 30 / 60.0);     // 3000
+            lookup.Add(210000, 10 / 60.0);     // 1000
+            lookup.Add(599000, 1 / 60.0);      // 100
             lookup.Add(600000, 1000 / 60.0);   // oops
 
             Model = new TimerModel()
