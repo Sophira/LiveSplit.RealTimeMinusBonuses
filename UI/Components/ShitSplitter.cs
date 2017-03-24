@@ -45,16 +45,18 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                     else
                     {
                         var timeSpans = txtGameTime.Text.Replace(" ", "").Split('+');
-                        var totalTime = TimeSpan.Zero;
+                        var enteredTime = TimeSpan.Zero;
                         foreach (var time in timeSpans)
                         {
-                            totalTime += TimeSpanParser.Parse(time);
+                            enteredTime += TimeSpanParser.Parse(time);
                         }
+                        var curTime = Model.CurrentState.CurrentTime;
+                        var newGameTime = curTime.GameTime + enteredTime;
 
-                        var mytime = Model.CurrentState.CurrentTime;
-                        Model.CurrentState.CurrentSplit.SplitTime = mytime;
-                        Model.CurrentState.CurrentSplitIndex++;
-                        var ms = totalTime.TotalMilliseconds;
+                        Model.CurrentState.SetGameTime(newGameTime);
+                        Model.Split();
+
+                        var ms = enteredTime.TotalMilliseconds;
 
                         // look up the time in our lookup table
                         var keys = new List<int>(lookup.Keys);
