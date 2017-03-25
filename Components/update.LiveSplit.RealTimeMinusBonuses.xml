@@ -1,5 +1,5 @@
 <updates>
-    <update version="1.0">
+    <update version="0.5">
         <files>
             <file path="Components/LiveSplit.RealTimeMinusBonuses.dll" status="changed"/>
         </files>
