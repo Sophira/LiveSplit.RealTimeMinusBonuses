@@ -1,25 +1,19 @@
-﻿using System.Windows.Forms;
+﻿using System.Reflection;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace LiveSplit.UI.Components
 {
     public partial class RealTimeMinusBonusesSettings : UserControl
     {
-        public bool UseSegmentTimes { get; set; }
-
         public RealTimeMinusBonusesSettings()
         {
             InitializeComponent();
-
-            UseSegmentTimes = true;
-
-            rdoSegmentTimes.DataBindings.Add("Checked", this, "UseSegmentTimes", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public void SetSettings(XmlNode node)
         {
             var element = (XmlElement)node;
-            UseSegmentTimes = SettingsHelper.ParseBool(element["UseSegmentTimes"]);
         }
 
         public XmlNode GetSettings(XmlDocument document)
@@ -36,8 +30,12 @@ namespace LiveSplit.UI.Components
 
         private int CreateSettingsNode(XmlDocument document, XmlElement parent)
         {
-            return SettingsHelper.CreateSetting(document, parent, "Version", "1.4") ^
-            SettingsHelper.CreateSetting(document, parent, "UseSegmentTimes", UseSegmentTimes);
+            return SettingsHelper.CreateSetting(document, parent, "Version", Assembly.GetExecutingAssembly().GetName().Version.ToString(3));
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

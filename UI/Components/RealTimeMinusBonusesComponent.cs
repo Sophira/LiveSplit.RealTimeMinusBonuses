@@ -15,7 +15,7 @@ namespace LiveSplit.UI.Components
         public Form GameTimeForm { get; set; }
         protected Point PreviousLocation { get; set; }
 
-        public override string ComponentName => "Real Time Minus Bonuses (proof-of-concept)";
+        public override string ComponentName => "Real Time Minus Bonuses [RTA-TB] (Sonic 3 only)";
 
         public RealTimeMinusBonusesComponent(LiveSplitState state)
         {

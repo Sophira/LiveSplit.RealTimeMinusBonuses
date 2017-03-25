@@ -117,4 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ComponentInfo.Text" xml:space="preserve">
+    <value>This release of RTA-TB has no configurable settings.
+
+Later releases will allow configurable time bonuses, and the option of entering either the in-game time or the in-game point bonus. For now, this component is for use with Sonic 3 (NTSC) only and is limited to time input only.
+
+To use this component, make sure you are displaying Game Time (which is actually RTA-TB with this component), and enter the in-game time from each level you complete. You can do this either as a colon-separated time (eg. "1:05" for 1 minute 5 seconds), or enter the value in seconds (eg. "65").
+
+The component will use this value to calculate the length of the time bonus countdown, and automatically pause the Game Time for the required length of time. The Real Time will continue running so that you can measure a pure RTA time if you want.
+
+You may wish to show two timers in your layout (Real Time and Game Time) for verification purposes.</value>
+  </data>
 </root>
