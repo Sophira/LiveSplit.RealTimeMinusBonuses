@@ -1,4 +1,20 @@
 <updates>
+    <update version="1.0">
+        <files>
+            <file path="Components/LiveSplit.RealTimeMinusBonuses.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                Major timing update - the plugin now leaves Real Time alone and pauses Game Time instead. If you used v0.1 and got gold splits, these will need to be reverted or moved to Game Time.
+            </change>
+            <change>
+                (GitHub issue #2) Timing is now much more accurate.
+            </change>
+            <change>
+                (GitHub issue #1) Undoing a split will now correctly restore the time that was lost when pausing.
+            </change>
+        </changelog>
+    </update>
     <update version="0.1">
         <files>
             <file path="Components/LiveSplit.RealTimeMinusBonuses.dll" status="changed"/>
