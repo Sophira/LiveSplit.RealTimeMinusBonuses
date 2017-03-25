@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShitSplitter));
             this.txtGameTime = new System.Windows.Forms.TextBox();
-            this.TimeBonusesTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // txtGameTime
@@ -43,11 +41,6 @@
             this.txtGameTime.Size = new System.Drawing.Size(345, 22);
             this.txtGameTime.TabIndex = 0;
             this.txtGameTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGameTime_KeyPress);
-            // 
-            // TimeBonusesTimer
-            // 
-            this.TimeBonusesTimer.Interval = 1000;
-            this.TimeBonusesTimer.Tick += new System.EventHandler(this.TimeBonusesTimer_Tick);
             // 
             // ShitSplitter
             // 
@@ -67,6 +60,5 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtGameTime;
-        private System.Windows.Forms.Timer TimeBonusesTimer;
     }
 }

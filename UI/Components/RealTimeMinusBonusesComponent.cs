@@ -30,7 +30,19 @@ namespace LiveSplit.UI.Components
         private void State_OnUndoSplit(object sender, EventArgs e)
         {
             var curIndex = CurrentState.CurrentSplitIndex;
-            CurrentState.SetGameTime(curIndex > 0 ? CurrentState.Run[curIndex - 1].SplitTime.GameTime : TimeSpan.Zero);
+            var gt = (ShitSplitter)GameTimeForm;
+
+            var lastRealTime = gt.LastSplit.RealTime;
+            var lastGameTime = gt.LastSplit.GameTime;
+            var curRealTime = CurrentState.CurrentTime.RealTime;
+            var curGameTime = CurrentState.CurrentTime.GameTime;
+            var realDiff = curRealTime - lastRealTime;
+            var gameDiff = curGameTime - lastGameTime;
+
+            gt.PauseInProgress = false;
+            CurrentState.IsGameTimePaused = false;
+            CurrentState.SetGameTime(CurrentState.CurrentTime.GameTime + (realDiff - gameDiff));
+            gt.LastSplit = (CurrentState.CurrentSplitIndex > 0 ? CurrentState.Run[CurrentState.CurrentSplitIndex - 1].SplitTime : Time.Zero);
         }
 
         void state_OnReset(object sender, TimerPhase e)
@@ -45,8 +57,8 @@ namespace LiveSplit.UI.Components
             CurrentState.Form.Invoke(new Action(() => GameTimeForm.Show(CurrentState.Form)));
             if (!PreviousLocation.IsEmpty)
                 GameTimeForm.Location = PreviousLocation;
-            CurrentState.IsGameTimePaused = true;
-            CurrentState.SetGameTime(TimeSpan.Zero);
+
+            CurrentState.LoadingTimes = TimeSpan.Zero;
         }
 
         public override Control GetSettingsControl(LayoutMode mode)
@@ -66,6 +78,14 @@ namespace LiveSplit.UI.Components
 
         public override void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
         {
+            var gt = (ShitSplitter)GameTimeForm;
+            if (gt.PauseInProgress && (state.CurrentTime.RealTime >= gt.PauseEnd))
+            {
+                gt.PauseInProgress = false;
+                var curTime = state.CurrentTime;
+                state.SetGameTime(curTime.GameTime + (curTime.RealTime - gt.PauseEnd));
+                state.IsGameTimePaused = false;
+            }
         }
 
         public override void Dispose()

@@ -12,6 +12,14 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
         protected RealTimeMinusBonusesSettings Settings { get; set; }
         protected Dictionary<int, double> lookup;
 
+        public bool PauseInProgress { get; set; }
+        public TimeSpan PauseStart { get; set; }
+        public TimeSpan PauseEnd { get; set; }
+
+        // state_OnUndoSplit (defined in RealTimeMinusBonusesComponent) is only called *after*
+        // it already erased the last split, so we need to save it for undo purposes.
+        public Time LastSplit { get; set; }
+
         public ShitSplitter(LiveSplitState state, RealTimeMinusBonusesSettings settings)
         {
             InitializeComponent();
@@ -30,6 +38,7 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                 CurrentState = state
             };
             Settings = settings;
+            PauseInProgress = false;
         }
 
         private void txtGameTime_KeyPress(object sender, KeyPressEventArgs e)
@@ -41,6 +50,7 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                     if (txtGameTime.Text == "")
                     {
                         Model.Split();
+                        LastSplit = Model.CurrentState.Run[Model.CurrentState.CurrentSplitIndex - 1].SplitTime;
                     }
                     else
                     {
@@ -51,10 +61,8 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                             enteredTime += TimeSpanParser.Parse(time);
                         }
                         var curTime = Model.CurrentState.CurrentTime;
-                        var newGameTime = curTime.GameTime + enteredTime;
-
-                        Model.CurrentState.SetGameTime(newGameTime);
                         Model.Split();
+                        LastSplit = Model.CurrentState.Run[Model.CurrentState.CurrentSplitIndex - 1].SplitTime;
 
                         var ms = enteredTime.TotalMilliseconds;
 
@@ -72,21 +80,16 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                         }
                         if (delayfor > 0)
                         {
-                            Model.Pause();
-                            TimeBonusesTimer.Interval = delayfor;
-                            TimeBonusesTimer.Enabled = true;
+                            Model.CurrentState.IsGameTimePaused = true;
+                            PauseStart = (TimeSpan)Model.CurrentState.CurrentTime.RealTime;
+                            PauseEnd = PauseStart.Add(new TimeSpan(0, 0, 0, 0, delayfor));
+                            PauseInProgress = true;
                         }
                         txtGameTime.Text = "";
                     }
                 }
                 catch { }
             }
-        }
-
-        private void TimeBonusesTimer_Tick(object sender, EventArgs e)
-        {
-            TimeBonusesTimer.Enabled = false;
-            Model.Pause();
         }
     }
 }
