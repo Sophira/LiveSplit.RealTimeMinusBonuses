@@ -1,5 +1,5 @@
-Real Time Minus Bonuses component for LiveSplit v0.5 [RTA-TB]
-=============================================================
+Real Time Minus Bonuses v0.5 for LiveSplit [RTA-TB]
+===================================================
 
 **This component currently only supports Sonic the Hedgehog 3 and games based on
 it (S&K, S3&K) that are run on an NTSC console.**
