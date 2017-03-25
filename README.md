@@ -1,7 +1,7 @@
 Real Time Minus Bonuses v0.5 for LiveSplit [RTA-TB]
 ===================================================
 
-**Binary Download (latest version):** [LiveSplit.RealTimeMinusBonuses.dll](https://github.com/Sophira/LiveSplit.RealTimeMinusBonuses/blob/master/Components/LiveSplit.RealTimeMinusBonuses.dll)
+**Binary Download (latest version):** [LiveSplit.RealTimeMinusBonuses.dll](https://github.com/Sophira/LiveSplit.RealTimeMinusBonuses/raw/master/Components/LiveSplit.RealTimeMinusBonuses.dll)
 
 Place this DLL in the 'Components' directory of LiveSplit. You will find the new
 component in the **Control** category when adding it to your layout.
