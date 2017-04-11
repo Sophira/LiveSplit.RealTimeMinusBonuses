@@ -23,6 +23,6 @@ namespace LiveSplit.Delta
 
         public string XMLURL => UpdateURL + "Components/update.LiveSplit.RealTimeMinusBonuses.xml";
 
-        public Version Version => Version.Parse("0.5");
+        public Version Version => Version.Parse("0.5.1");
     }
 }

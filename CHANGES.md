@@ -1,6 +1,11 @@
 Changelog for RTA-TB
 ====================
 
+v0.5.1 (2017-04-11):
+
+* (GitHub issue #6) Undoing a split made using the regular split key (rather
+  than by using the plugin) will now correctly restore the proper time.
+
 v0.5 (2017-03-25):
 
 * Timing in this version has been given a major overhaul. The component now uses
