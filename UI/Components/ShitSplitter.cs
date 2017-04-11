@@ -50,7 +50,6 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                     if (txtGameTime.Text == "")
                     {
                         Model.Split();
-                        LastSplit = Model.CurrentState.Run[Model.CurrentState.CurrentSplitIndex - 1].SplitTime;
                     }
                     else
                     {
@@ -62,7 +61,6 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                         }
                         var curTime = Model.CurrentState.CurrentTime;
                         Model.Split();
-                        LastSplit = Model.CurrentState.Run[Model.CurrentState.CurrentSplitIndex - 1].SplitTime;
 
                         var ms = enteredTime.TotalMilliseconds;
 

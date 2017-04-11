@@ -24,6 +24,7 @@ namespace LiveSplit.UI.Components
             state.OnStart += state_OnStart;
             state.OnReset += state_OnReset;
             state.OnUndoSplit += State_OnUndoSplit;
+            state.OnSplit += State_OnSplit;
             CurrentState = state;
         }
 
@@ -43,6 +44,13 @@ namespace LiveSplit.UI.Components
             CurrentState.IsGameTimePaused = false;
             CurrentState.SetGameTime(CurrentState.CurrentTime.GameTime + (realDiff - gameDiff));
             gt.LastSplit = (CurrentState.CurrentSplitIndex > 0 ? CurrentState.Run[CurrentState.CurrentSplitIndex - 1].SplitTime : Time.Zero);
+        }
+
+        private void State_OnSplit(object sender, EventArgs e)
+        {
+            var curIndex = CurrentState.CurrentSplitIndex;
+            var gt = (ShitSplitter)GameTimeForm;
+            gt.LastSplit = (curIndex > 0 ? CurrentState.Run[curIndex - 1].SplitTime : Time.Zero);
         }
 
         void state_OnReset(object sender, TimerPhase e)
