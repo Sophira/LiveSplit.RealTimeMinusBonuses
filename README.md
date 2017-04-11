@@ -19,6 +19,30 @@ LiveSplit (and in fact this component is based on that one), but instead of
 using the entered time to record your splits, it pauses the in-game timer for a
 certain amount of time.
 
+How to Use
+----------
+
+To use this component, simply add it to your layout - you'll find it in the
+"Control" category.
+
+While a run is in progress, a window with a text box will appear so that you can
+enter your in-game time at the end of a level; you can enter this as either a
+colon-separated time (eg. "1:05" for 1 minutes 5 seconds), or enter the value in
+seconds (eg. "65"). Upon hitting RETURN, a split will be performed and the Game
+Time timer will be paused for the appropriate length of time. You do not need to
+split separately as the component will do this automatically for you upon
+hitting RETURN.
+
+If you do not need to pause when splitting, you may either use your regular
+split key (if hotkeys are global) or simply press RETURN while the text box is
+blank.
+
+You may wish to show both Real Time and Game Time splits in your layout for
+verification purposes.
+
+About the Component
+-------------------
+
 This component is being developed for the classic Sonic speedrunning community,
 and while it is still very limited, I feel it is good and accurate enough to use
 for runs. In later releases this component will allow you to create your own
@@ -36,8 +60,8 @@ you do this, please let me know your results by getting in touch with me on
 Discord, or by opening a issue on GitHub with the "feedback" label.)
 
 In fact, any feedback on this component would be very, very helpful - as stated
-above, I'm not a runner and I may have missed some issues. Please [check the
-Issues list](https://github.com/Sophira/LiveSplit.RealTimeMinusBonuses/issues)
+above, I'm not a speedrunner and I may have missed some issues. Please
+[check the Issues list](https://github.com/Sophira/LiveSplit.RealTimeMinusBonuses/issues)
 before filing a bug to make sure it hasn't already been filed.
 
 For a list of changes in this component over time, see the "CHANGES.md" file, or
