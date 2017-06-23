@@ -9,9 +9,9 @@ namespace LiveSplit.Delta
 {
     public class RealTimeMinusBonusesFactory : IComponentFactory
     {
-        public string ComponentName => "Real Time Minus Bonuses [RTA-TB] (Sonic 3 only)";
+        public string ComponentName => "Real Time Minus Bonuses [RTA-TB]";
 
-        public string Description => "Subtract IGT time bonuses from an RTA Sonic 3 run.";
+        public string Description => "Subtract IGT time bonuses from an RTA run.";
 
         public ComponentCategory Category => ComponentCategory.Control;
 
@@ -23,6 +23,6 @@ namespace LiveSplit.Delta
 
         public string XMLURL => UpdateURL + "Components/update.LiveSplit.RealTimeMinusBonuses.xml";
 
-        public Version Version => Version.Parse("0.5.1");
+        public Version Version => Version.Parse("0.6");
     }
 }

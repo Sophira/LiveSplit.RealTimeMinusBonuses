@@ -9,8 +9,8 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
     public partial class ShitSplitter : Form
     {
         protected ITimerModel Model { get; set; }
-        protected RealTimeMinusBonusesSettings Settings { get; set; }
-        protected Dictionary<int, double> lookup;
+        protected RealTimeMinusBonusesLocalSettings LocalSettings { get; set; }
+        protected SortedDictionary<int, int> lookup;
 
         public bool PauseInProgress { get; set; }
         public TimeSpan PauseStart { get; set; }
@@ -20,24 +20,15 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
         // it already erased the last split, so we need to save it for undo purposes.
         public Time LastSplit { get; set; }
 
-        public ShitSplitter(LiveSplitState state, RealTimeMinusBonusesSettings settings)
+        public ShitSplitter(LiveSplitState state, RealTimeMinusBonusesLocalSettings settings)
         {
             InitializeComponent();
-            lookup = new Dictionary<int, double>();
-            lookup.Add(60000, 500 / 60.0);     // 50000
-            lookup.Add(90000, 100 / 60.0);     // 10000
-            lookup.Add(120000, 50 / 60.0);     // 5000
-            lookup.Add(150000, 40 / 60.0);     // 4000
-            lookup.Add(180000, 30 / 60.0);     // 3000
-            lookup.Add(210000, 10 / 60.0);     // 1000
-            lookup.Add(599000, 1 / 60.0);      // 100
-            lookup.Add(600000, 1000 / 60.0);   // oops
+            LocalSettings = settings;
 
             Model = new TimerModel()
             {
                 CurrentState = state
             };
-            Settings = settings;
             PauseInProgress = false;
         }
 
@@ -53,40 +44,68 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                     }
                     else
                     {
-                        var timeSpans = txtGameTime.Text.Replace(" ", "").Split('+');
-                        var enteredTime = TimeSpan.Zero;
-                        foreach (var time in timeSpans)
+                        int points = -1;
+                        if (LocalSettings.InputMethod == RealTimeMinusBonusesComponent.InputMethodEnum.IngameTime)
                         {
-                            enteredTime += TimeSpanParser.Parse(time);
-                        }
-                        var curTime = Model.CurrentState.CurrentTime;
-                        Model.Split();
 
-                        var ms = enteredTime.TotalMilliseconds;
-
-                        // look up the time in our lookup table
-                        var keys = new List<int>(lookup.Keys);
-                        int delayfor = 0;
-                        for (var i = 0; i < keys.Count; i++)
-                        {
-                            int compms = keys[i];
-                            if (ms < compms)
+                            var timeSpans = txtGameTime.Text.Replace(" ", "").Split('+');
+                            var enteredTime = TimeSpan.Zero;
+                            foreach (var time in timeSpans)
                             {
-                                delayfor = (int)Math.Round(lookup[compms] * 1000);
-                                break;
+                                enteredTime += TimeSpanParser.Parse(time);
+                            }
+                            var curTime = Model.CurrentState.CurrentTime;
+
+                            var ms = enteredTime.TotalMilliseconds;
+
+                            // look up the time in our lookup table
+                            foreach (int compms in LocalSettings.IGTLookup.Keys)
+                            {
+                                if (ms < compms)
+                                {
+                                    points = LocalSettings.IGTLookup[compms];
+                                    break;
+                                }
                             }
                         }
-                        if (delayfor > 0)
+                        else if (LocalSettings.InputMethod == RealTimeMinusBonusesComponent.InputMethodEnum.Points)
                         {
-                            Model.CurrentState.IsGameTimePaused = true;
-                            PauseStart = (TimeSpan)Model.CurrentState.CurrentTime.RealTime;
-                            PauseEnd = PauseStart.Add(new TimeSpan(0, 0, 0, 0, delayfor));
-                            PauseInProgress = true;
+                            points = Int32.Parse(txtGameTime.Text);
+                        }
+
+                        if (points != -1)
+                        {
+                            Model.Split();
+                            int frames = points / LocalSettings.PointsPerFrame;
+                            double delaysecs = frames / LocalSettings.FramesPerSecond;
+
+                            int delayfor = (int)Math.Round(delaysecs * 1000);
+                            if (delayfor > 0)
+                            {
+                                Model.CurrentState.IsGameTimePaused = true;
+                                PauseStart = (TimeSpan)Model.CurrentState.CurrentTime.RealTime;
+                                PauseEnd = PauseStart.Add(new TimeSpan(0, 0, 0, 0, delayfor));
+                                PauseInProgress = true;
+                            }
                         }
                         txtGameTime.Text = "";
                     }
                 }
                 catch { }
+            }
+        }
+
+        private void ShitSplitter_Load(object sender, EventArgs e)
+        {
+            if (LocalSettings.InputMethod == RealTimeMinusBonusesComponent.InputMethodEnum.IngameTime)
+            {
+                labelInputExpected.Text = "IGT:";
+                this.Text = "Enter In-game Time";
+            }
+            else if (LocalSettings.InputMethod == RealTimeMinusBonusesComponent.InputMethodEnum.Points)
+            {
+                labelInputExpected.Text = "Points:";
+                this.Text = "Enter Points Bonus";
             }
         }
     }

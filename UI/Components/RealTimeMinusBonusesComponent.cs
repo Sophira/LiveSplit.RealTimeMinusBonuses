@@ -3,24 +3,51 @@ using LiveSplit.Model;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace LiveSplit.UI.Components
 {
+    public class RealTimeMinusBonusesLocalSettings
+    {
+        // we save a copy of the various settings when the run starts;
+        // a settings change requires restarting the run to take effect.
+        public RealTimeMinusBonusesComponent.InputMethodEnum InputMethod { get; set; }
+        public int PointsPerFrame { get; set; }
+        public double FramesPerSecond { get; set; }
+        public SortedDictionary<int, int> IGTLookup { get; set; }
+
+        public RealTimeMinusBonusesLocalSettings(RealTimeMinusBonusesSettings settings)
+        {
+            InputMethod = settings.InputMethod;
+            PointsPerFrame = settings.PointsPerFrame;
+            FramesPerSecond = settings.FramesPerSecond;
+            IGTLookup = new SortedDictionary<int, int>(settings.IGTLookup);
+        }
+    }
+
     public class RealTimeMinusBonusesComponent : LogicComponent
     {
         public RealTimeMinusBonusesSettings Settings { get; set; }
+        public RealTimeMinusBonusesLocalSettings LocalSettings { get; set; }
 
         public GraphicsCache Cache { get; set; }
         protected LiveSplitState CurrentState { get; set; }
         public Form GameTimeForm { get; set; }
         protected Point PreviousLocation { get; set; }
 
-        public override string ComponentName => "Real Time Minus Bonuses [RTA-TB] (Sonic 3 only)";
+        public enum InputMethodEnum
+        {
+            IngameTime,
+            Points
+        }
+
+        public override string ComponentName => "Real Time Minus Bonuses [RTA-TB]";
 
         public RealTimeMinusBonusesComponent(LiveSplitState state)
         {
             Settings = new RealTimeMinusBonusesSettings();
-            GameTimeForm = new ShitSplitter(state, Settings);
+            LocalSettings = new RealTimeMinusBonusesLocalSettings(Settings);
+            GameTimeForm = new ShitSplitter(state, LocalSettings);
             state.OnStart += state_OnStart;
             state.OnReset += state_OnReset;
             state.OnUndoSplit += State_OnUndoSplit;
@@ -61,7 +88,10 @@ namespace LiveSplit.UI.Components
 
         void state_OnStart(object sender, EventArgs e)
         {
-            GameTimeForm = new ShitSplitter(CurrentState, Settings);
+            // take a copy of the settings
+            LocalSettings = new RealTimeMinusBonusesLocalSettings(Settings);
+
+            GameTimeForm = new ShitSplitter(CurrentState, LocalSettings);
             CurrentState.Form.Invoke(new Action(() => GameTimeForm.Show(CurrentState.Form)));
             if (!PreviousLocation.IsEmpty)
                 GameTimeForm.Location = PreviousLocation;
