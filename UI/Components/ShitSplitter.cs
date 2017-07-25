@@ -76,7 +76,7 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                         if (points != -1)
                         {
                             Model.Split();
-                            int frames = points / LocalSettings.PointsPerFrame;
+                            int frames = points / LocalSettings.PointsPerFrame;   // yes, assigning to an int without a round; it's deliberate! We want it to round down.
                             double delaysecs = frames / LocalSettings.FramesPerSecond;
 
                             int delayfor = (int)Math.Round(delaysecs * 1000);
