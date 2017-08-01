@@ -37,6 +37,7 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
         {
             if (e.KeyChar == '\r')
             {
+                var entryerror = 0;
                 try
                 {
                     if (txtGameTime.Text == "")
@@ -90,15 +91,26 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                                 PauseInProgress = true;
                             }
                         }
-                        txtGameTime.BackColor = SystemColors.Window;
-                        txtGameTime.ForeColor = SystemColors.WindowText;
-                        txtGameTime.Text = "";
+                        else
+                        {
+                            entryerror = 1;
+                        }
                     }
                 }
                 catch {
+                    entryerror = 1;
+                }
+                if (entryerror == 1)
+                {
                     // signal a probable error in the input
                     txtGameTime.BackColor = Color.MistyRose;
                     txtGameTime.ForeColor = Color.Black;
+                }
+                else
+                {
+                    txtGameTime.BackColor = SystemColors.Window;
+                    txtGameTime.ForeColor = SystemColors.WindowText;
+                    txtGameTime.Text = "";
                 }
             }
         }
