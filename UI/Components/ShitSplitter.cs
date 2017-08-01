@@ -3,6 +3,7 @@ using LiveSplit.UI.Components;
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace LiveSplit.RealTimeMinusBonuses.UI.Components
 {
@@ -89,10 +90,16 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                                 PauseInProgress = true;
                             }
                         }
+                        txtGameTime.BackColor = SystemColors.Window;
+                        txtGameTime.ForeColor = SystemColors.WindowText;
                         txtGameTime.Text = "";
                     }
                 }
-                catch { }
+                catch {
+                    // signal a probable error in the input
+                    txtGameTime.BackColor = Color.MistyRose;
+                    txtGameTime.ForeColor = Color.Black;
+                }
             }
         }
 
@@ -108,6 +115,8 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                 labelInputExpected.Text = "Points:";
                 this.Text = "Enter Points Bonus";
             }
+            txtGameTime.BackColor = SystemColors.Window;
+            txtGameTime.ForeColor = SystemColors.WindowText;
         }
     }
 }

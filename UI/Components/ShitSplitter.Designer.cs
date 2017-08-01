@@ -52,6 +52,7 @@
             // txtGameTime
             // 
             this.txtGameTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGameTime.BackColor = System.Drawing.SystemColors.Window;
             this.txtGameTime.Location = new System.Drawing.Point(45, 4);
             this.txtGameTime.Margin = new System.Windows.Forms.Padding(4);
             this.txtGameTime.Name = "txtGameTime";
