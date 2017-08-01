@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "10",
             "300"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "20",
             "200"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
             "30",
             "100"}, -1);
             this.tableLayoutSettings = new System.Windows.Forms.TableLayoutPanel();
@@ -48,11 +48,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.s_fpsNTSCFull = new System.Windows.Forms.RadioButton();
             this.s_fpsPALFull = new System.Windows.Forms.RadioButton();
-            this.s_fpsCustom = new System.Windows.Forms.RadioButton();
             this.s_PointsPerFrame = new System.Windows.Forms.NumericUpDown();
-            this.s_fpsCustomValue = new System.Windows.Forms.NumericUpDown();
             this.s_fpsNTSCHalf = new System.Windows.Forms.RadioButton();
             this.s_fpsPALHalf = new System.Windows.Forms.RadioButton();
+            this.s_fpsCustom = new System.Windows.Forms.RadioButton();
+            this.s_fpsCustomValue = new System.Windows.Forms.NumericUpDown();
+            this.s_fpsPC = new System.Windows.Forms.RadioButton();
             this.groupIGTLookup = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.IGTRemoveRows = new System.Windows.Forms.Button();
@@ -66,6 +67,10 @@
             this.lookupAddMaxIGT = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.linkReadme = new System.Windows.Forms.LinkLabel();
+            this.groupPointsEntry = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.s_PointsMultiplicationFactor = new System.Windows.Forms.NumericUpDown();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutSettings.SuspendLayout();
             this.groupTimeInput.SuspendLayout();
@@ -77,6 +82,9 @@
             this.groupIGTLookup.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
+            this.groupPointsEntry.SuspendLayout();
+            this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.s_PointsMultiplicationFactor)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,18 +94,20 @@
             this.tableLayoutSettings.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutSettings.Controls.Add(this.groupTimeInput, 0, 0);
             this.tableLayoutSettings.Controls.Add(this.groupCountdownSpeed, 0, 1);
-            this.tableLayoutSettings.Controls.Add(this.groupIGTLookup, 0, 2);
-            this.tableLayoutSettings.Controls.Add(this.label4, 0, 3);
-            this.tableLayoutSettings.Controls.Add(this.linkReadme, 0, 4);
+            this.tableLayoutSettings.Controls.Add(this.groupIGTLookup, 0, 3);
+            this.tableLayoutSettings.Controls.Add(this.label4, 0, 4);
+            this.tableLayoutSettings.Controls.Add(this.linkReadme, 0, 5);
+            this.tableLayoutSettings.Controls.Add(this.groupPointsEntry, 0, 2);
             this.tableLayoutSettings.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutSettings.Name = "tableLayoutSettings";
-            this.tableLayoutSettings.RowCount = 5;
+            this.tableLayoutSettings.RowCount = 6;
             this.tableLayoutSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutSettings.Size = new System.Drawing.Size(605, 526);
+            this.tableLayoutSettings.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutSettings.Size = new System.Drawing.Size(605, 552);
             this.tableLayoutSettings.TabIndex = 0;
             // 
             // groupTimeInput
@@ -183,11 +193,12 @@
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.s_fpsNTSCFull, 2, 1);
             this.tableLayoutPanel3.Controls.Add(this.s_fpsPALFull, 3, 1);
-            this.tableLayoutPanel3.Controls.Add(this.s_fpsCustom, 4, 1);
             this.tableLayoutPanel3.Controls.Add(this.s_PointsPerFrame, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.s_fpsCustomValue, 5, 1);
             this.tableLayoutPanel3.Controls.Add(this.s_fpsNTSCHalf, 2, 2);
             this.tableLayoutPanel3.Controls.Add(this.s_fpsPALHalf, 3, 2);
+            this.tableLayoutPanel3.Controls.Add(this.s_fpsCustom, 4, 2);
+            this.tableLayoutPanel3.Controls.Add(this.s_fpsCustomValue, 5, 2);
+            this.tableLayoutPanel3.Controls.Add(this.s_fpsPC, 4, 1);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(9, 21);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 3;
@@ -241,18 +252,6 @@
             this.s_fpsPALFull.UseVisualStyleBackColor = true;
             this.s_fpsPALFull.CheckedChanged += new System.EventHandler(this.s_fpsPAL_CheckedChanged);
             // 
-            // s_fpsCustom
-            // 
-            this.s_fpsCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.s_fpsCustom.AutoSize = true;
-            this.s_fpsCustom.Location = new System.Drawing.Point(396, 31);
-            this.s_fpsCustom.Name = "s_fpsCustom";
-            this.s_fpsCustom.Size = new System.Drawing.Size(80, 21);
-            this.s_fpsCustom.TabIndex = 215;
-            this.s_fpsCustom.Text = "Custom:";
-            this.s_fpsCustom.UseVisualStyleBackColor = true;
-            this.s_fpsCustom.CheckedChanged += new System.EventHandler(this.s_fpsCustom_CheckedChanged);
-            // 
             // s_PointsPerFrame
             // 
             this.s_PointsPerFrame.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -271,26 +270,6 @@
             this.s_PointsPerFrame.Name = "s_PointsPerFrame";
             this.s_PointsPerFrame.Size = new System.Drawing.Size(435, 22);
             this.s_PointsPerFrame.TabIndex = 201;
-            // 
-            // s_fpsCustomValue
-            // 
-            this.s_fpsCustomValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.s_fpsCustomValue.DecimalPlaces = 6;
-            this.s_fpsCustomValue.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.s_fpsCustomValue.Location = new System.Drawing.Point(482, 31);
-            this.s_fpsCustomValue.Maximum = new decimal(new int[] {
-            -1,
-            0,
-            0,
-            0});
-            this.s_fpsCustomValue.Name = "s_fpsCustomValue";
-            this.s_fpsCustomValue.Size = new System.Drawing.Size(96, 22);
-            this.s_fpsCustomValue.TabIndex = 216;
-            this.s_fpsCustomValue.ValueChanged += new System.EventHandler(this.s_fpsCustomValue_ValueChanged);
             // 
             // s_fpsNTSCHalf
             // 
@@ -318,13 +297,57 @@
             this.s_fpsPALHalf.UseVisualStyleBackColor = true;
             this.s_fpsPALHalf.CheckedChanged += new System.EventHandler(this.s_fpsPALHalf_CheckedChanged);
             // 
+            // s_fpsCustom
+            // 
+            this.s_fpsCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.s_fpsCustom.AutoSize = true;
+            this.s_fpsCustom.Location = new System.Drawing.Point(396, 59);
+            this.s_fpsCustom.Name = "s_fpsCustom";
+            this.s_fpsCustom.Size = new System.Drawing.Size(80, 21);
+            this.s_fpsCustom.TabIndex = 215;
+            this.s_fpsCustom.Text = "Custom:";
+            this.s_fpsCustom.UseVisualStyleBackColor = true;
+            this.s_fpsCustom.CheckedChanged += new System.EventHandler(this.s_fpsCustom_CheckedChanged);
+            // 
+            // s_fpsCustomValue
+            // 
+            this.s_fpsCustomValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.s_fpsCustomValue.DecimalPlaces = 6;
+            this.s_fpsCustomValue.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.s_fpsCustomValue.Location = new System.Drawing.Point(482, 59);
+            this.s_fpsCustomValue.Maximum = new decimal(new int[] {
+            -1,
+            0,
+            0,
+            0});
+            this.s_fpsCustomValue.Name = "s_fpsCustomValue";
+            this.s_fpsCustomValue.Size = new System.Drawing.Size(96, 22);
+            this.s_fpsCustomValue.TabIndex = 216;
+            this.s_fpsCustomValue.ValueChanged += new System.EventHandler(this.s_fpsCustomValue_ValueChanged);
+            // 
+            // s_fpsPC
+            // 
+            this.s_fpsPC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.s_fpsPC.AutoSize = true;
+            this.s_fpsPC.Location = new System.Drawing.Point(396, 31);
+            this.s_fpsPC.Name = "s_fpsPC";
+            this.s_fpsPC.Size = new System.Drawing.Size(80, 21);
+            this.s_fpsPC.TabIndex = 217;
+            this.s_fpsPC.Text = "60 (PC)";
+            this.s_fpsPC.UseVisualStyleBackColor = true;
+            this.s_fpsPC.CheckedChanged += new System.EventHandler(this.s_fpsPC_CheckedChanged);
+            // 
             // groupIGTLookup
             // 
             this.groupIGTLookup.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupIGTLookup.Controls.Add(this.tableLayoutPanel4);
-            this.groupIGTLookup.Location = new System.Drawing.Point(3, 178);
+            this.groupIGTLookup.Location = new System.Drawing.Point(3, 239);
             this.groupIGTLookup.Name = "groupIGTLookup";
             this.groupIGTLookup.Size = new System.Drawing.Size(599, 247);
             this.groupIGTLookup.TabIndex = 300;
@@ -378,11 +401,11 @@
             this.s_LookupTable.GridLines = true;
             this.s_LookupTable.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.s_LookupTable.HideSelection = false;
-            listViewItem1.StateImageIndex = 0;
+            listViewItem7.StateImageIndex = 0;
             this.s_LookupTable.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3});
+            listViewItem7,
+            listViewItem8,
+            listViewItem9});
             this.s_LookupTable.Location = new System.Drawing.Point(3, 3);
             this.s_LookupTable.Name = "s_LookupTable";
             this.tableLayoutPanel4.SetRowSpan(this.s_LookupTable, 2);
@@ -467,7 +490,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 428);
+            this.label4.Location = new System.Drawing.Point(3, 489);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(466, 17);
@@ -477,13 +500,65 @@
             // linkReadme
             // 
             this.linkReadme.AutoSize = true;
-            this.linkReadme.Location = new System.Drawing.Point(3, 448);
+            this.linkReadme.Location = new System.Drawing.Point(3, 509);
             this.linkReadme.Name = "linkReadme";
             this.linkReadme.Size = new System.Drawing.Size(549, 17);
             this.linkReadme.TabIndex = 231;
             this.linkReadme.TabStop = true;
             this.linkReadme.Text = "https://github.com/Sophira/LiveSplit.RealTimeMinusBonuses/blob/master/README.md";
             this.linkReadme.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkReadme_LinkClicked);
+            // 
+            // groupPointsEntry
+            // 
+            this.groupPointsEntry.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupPointsEntry.Controls.Add(this.tableLayoutPanel5);
+            this.groupPointsEntry.Location = new System.Drawing.Point(3, 178);
+            this.groupPointsEntry.Name = "groupPointsEntry";
+            this.groupPointsEntry.Size = new System.Drawing.Size(599, 55);
+            this.groupPointsEntry.TabIndex = 301;
+            this.groupPointsEntry.TabStop = false;
+            this.groupPointsEntry.Text = "Points Entry options (only relevant when \"Enter points bonus directly\" is selecte" +
+    "d)";
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.ColumnCount = 2;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 408F));
+            this.tableLayoutPanel5.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.s_PointsMultiplicationFactor, 1, 0);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(9, 21);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 1;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(590, 30);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(176, 17);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Multiply entered values by:";
+            // 
+            // s_PointsMultiplicationFactor
+            // 
+            this.s_PointsMultiplicationFactor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.s_PointsMultiplicationFactor.Location = new System.Drawing.Point(185, 4);
+            this.s_PointsMultiplicationFactor.Maximum = new decimal(new int[] {
+            -1,
+            0,
+            0,
+            0});
+            this.s_PointsMultiplicationFactor.Name = "s_PointsMultiplicationFactor";
+            this.s_PointsMultiplicationFactor.Size = new System.Drawing.Size(402, 22);
+            this.s_PointsMultiplicationFactor.TabIndex = 3;
             // 
             // tableLayoutPanel1
             // 
@@ -495,7 +570,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(611, 569);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(611, 559);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // RealTimeMinusBonusesSettings
@@ -506,7 +581,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "RealTimeMinusBonusesSettings";
             this.Padding = new System.Windows.Forms.Padding(9);
-            this.Size = new System.Drawing.Size(635, 596);
+            this.Size = new System.Drawing.Size(635, 579);
             this.Load += new System.EventHandler(this.RealTimeMinusBonusesSettings_Load);
             this.tableLayoutSettings.ResumeLayout(false);
             this.tableLayoutSettings.PerformLayout();
@@ -524,6 +599,10 @@
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
             this.tableLayoutPanel9.PerformLayout();
+            this.groupPointsEntry.ResumeLayout(false);
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.s_PointsMultiplicationFactor)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -561,5 +640,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.RadioButton s_fpsNTSCHalf;
         private System.Windows.Forms.RadioButton s_fpsPALHalf;
+        private System.Windows.Forms.RadioButton s_fpsPC;
+        private System.Windows.Forms.GroupBox groupPointsEntry;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown s_PointsMultiplicationFactor;
     }
 }

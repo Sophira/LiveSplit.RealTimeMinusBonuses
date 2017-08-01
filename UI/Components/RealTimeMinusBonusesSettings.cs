@@ -14,6 +14,7 @@ namespace LiveSplit.UI.Components
         public RealTimeMinusBonusesComponent.InputMethodEnum InputMethod { get; set; }
         public int PointsPerFrame { get; set; }
         public double FramesPerSecond { get; set; }
+        public int PointsMultiplicationFactor { get; set; }
         public SortedDictionary<int, int> IGTLookup { get; set; }
 
         protected const double FPS_NTSCFULL = 59.94;
@@ -21,6 +22,8 @@ namespace LiveSplit.UI.Components
 
         protected const double FPS_NTSCHALF = 29.97;
         protected const double FPS_PALHALF = 25;
+
+        protected const double FPS_PC = 60;
 
         private IButtonControl parentDefault;
 
@@ -32,6 +35,7 @@ namespace LiveSplit.UI.Components
             InputMethod = RealTimeMinusBonusesComponent.InputMethodEnum.IngameTime;
             PointsPerFrame = 100;
             FramesPerSecond = FPS_NTSCFULL;
+            PointsMultiplicationFactor = 1;
 
             IGTLookup = new SortedDictionary<int, int>();
             IGTLookup.Add(60000, 50000);
@@ -43,8 +47,9 @@ namespace LiveSplit.UI.Components
             IGTLookup.Add(599000, 100);
             IGTLookup.Add(600000, 100000);   // oops
 
-            // only PointsPerFrame can be automatically dealt with; all other settings have complex requirements
+            // only PointsPerFrame and PointsMultiplicationFactor can be automatically dealt with; all other settings have complex requirements
             s_PointsPerFrame.DataBindings.Add("Value", this, "PointsPerFrame", false, DataSourceUpdateMode.OnPropertyChanged);
+            s_PointsMultiplicationFactor.DataBindings.Add("Value", this, "PointsMultiplicationFactor", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         public void SetSettings(XmlNode node)
@@ -53,6 +58,7 @@ namespace LiveSplit.UI.Components
             InputMethod = SettingsHelper.ParseEnum<RealTimeMinusBonusesComponent.InputMethodEnum>(element["InputMethod"], RealTimeMinusBonusesComponent.InputMethodEnum.IngameTime);
             PointsPerFrame = SettingsHelper.ParseInt(element["PointsPerFrame"], 100);
             FramesPerSecond = SettingsHelper.ParseDouble(element["FramesPerSecond"], FPS_NTSCFULL);
+            PointsMultiplicationFactor = SettingsHelper.ParseInt(element["PointsMultiplicationFactor"], 1);
             var lookupElement = element["IGTLookup"];
             if (lookupElement != null)
             {
@@ -83,9 +89,10 @@ namespace LiveSplit.UI.Components
             hashCode = SettingsHelper.CreateSetting(document, parent, "Version", Assembly.GetExecutingAssembly().GetName().Version.ToString(3)) ^
                 SettingsHelper.CreateSetting(document, parent, "InputMethod", InputMethod) ^
                 SettingsHelper.CreateSetting(document, parent, "PointsPerFrame", PointsPerFrame) ^
-                SettingsHelper.CreateSetting(document, parent, "FramesPerSecond", FramesPerSecond);
+                SettingsHelper.CreateSetting(document, parent, "FramesPerSecond", FramesPerSecond) ^
+                SettingsHelper.CreateSetting(document, parent, "PointsMultiplicationFactor", PointsMultiplicationFactor);
 
-            XmlElement lookupElement = null;
+        XmlElement lookupElement = null;
             if (document != null)
             {
                 lookupElement = document.CreateElement("IGTLookup");
@@ -122,11 +129,17 @@ namespace LiveSplit.UI.Components
             {
                 InputMethod = RealTimeMinusBonusesComponent.InputMethodEnum.IngameTime;
                 groupIGTLookup.Enabled = true;
+                //groupIGTLookup.Visible = true;
+                //groupPointsEntry.Visible = false;
+                groupPointsEntry.Enabled = false;
             }
             else
             {
                 InputMethod = RealTimeMinusBonusesComponent.InputMethodEnum.Points;
+                //groupIGTLookup.Visible = false;
                 groupIGTLookup.Enabled = false;
+                groupPointsEntry.Enabled = true;
+                //groupPointsEntry.Visible = true;
             }
         }
 
@@ -152,6 +165,8 @@ namespace LiveSplit.UI.Components
                 s_fpsNTSCHalf.Checked = true;
             else if (FramesPerSecond == FPS_PALHALF)
                 s_fpsPALHalf.Checked = true;
+            else if (FramesPerSecond == FPS_PC)
+                s_fpsPC.Checked = true;
             else
                 s_fpsCustom.Checked = true;
             UpdateFPS();
@@ -197,6 +212,8 @@ namespace LiveSplit.UI.Components
                 FramesPerSecond = FPS_NTSCHALF;
             else if (s_fpsPALHalf.Checked)
                 FramesPerSecond = FPS_PALHALF;
+            else if (s_fpsPC.Checked)
+                FramesPerSecond = FPS_PC;
             else
                 FramesPerSecond = (double)s_fpsCustomValue.Value;
         }
@@ -212,6 +229,11 @@ namespace LiveSplit.UI.Components
         }
 
         private void s_fpsPALHalf_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateFPS();
+        }
+
+        private void s_fpsPC_CheckedChanged(object sender, EventArgs e)
         {
             UpdateFPS();
         }

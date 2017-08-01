@@ -13,6 +13,7 @@ namespace LiveSplit.UI.Components
         // a settings change requires restarting the run to take effect.
         public RealTimeMinusBonusesComponent.InputMethodEnum InputMethod { get; set; }
         public int PointsPerFrame { get; set; }
+        public int PointsMultiplicationFactor { get; set; }
         public double FramesPerSecond { get; set; }
         public SortedDictionary<int, int> IGTLookup { get; set; }
 
@@ -20,6 +21,7 @@ namespace LiveSplit.UI.Components
         {
             InputMethod = settings.InputMethod;
             PointsPerFrame = settings.PointsPerFrame;
+            PointsMultiplicationFactor = settings.PointsMultiplicationFactor;
             FramesPerSecond = settings.FramesPerSecond;
             IGTLookup = new SortedDictionary<int, int>(settings.IGTLookup);
         }

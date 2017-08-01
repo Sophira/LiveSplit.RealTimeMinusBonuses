@@ -71,6 +71,7 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
                         else if (LocalSettings.InputMethod == RealTimeMinusBonusesComponent.InputMethodEnum.Points)
                         {
                             points = Int32.Parse(txtGameTime.Text);
+                            points *= LocalSettings.PointsMultiplicationFactor;
                         }
 
                         if (points != -1)
