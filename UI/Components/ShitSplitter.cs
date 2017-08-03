@@ -130,5 +130,11 @@ namespace LiveSplit.RealTimeMinusBonuses.UI.Components
             txtGameTime.BackColor = SystemColors.Window;
             txtGameTime.ForeColor = SystemColors.WindowText;
         }
+
+        private void txtGameTime_TextChanged(object sender, EventArgs e)
+        {
+            txtGameTime.BackColor = SystemColors.Window;
+            txtGameTime.ForeColor = SystemColors.WindowText;
+        }
     }
 }

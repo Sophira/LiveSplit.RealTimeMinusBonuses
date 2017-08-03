@@ -61,6 +61,7 @@
             this.txtGameTime.Name = "txtGameTime";
             this.txtGameTime.Size = new System.Drawing.Size(306, 22);
             this.txtGameTime.TabIndex = 1;
+            this.txtGameTime.TextChanged += new System.EventHandler(this.txtGameTime_TextChanged);
             this.txtGameTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGameTime_KeyPress);
             // 
             // labelInputExpected
