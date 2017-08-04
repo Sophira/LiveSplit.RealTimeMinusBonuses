@@ -1,6 +1,33 @@
 Changelog for RTA-TB
 ====================
 
+v0.7 (tba):
+
+* (GitHub issue #5) When entering points bonuses, a new setting now exists to
+  multiply all entered points values during a run by a certain number, such as
+  1000. This can cut down on typing significantly during a run.
+
+* The FPS setting has a new radio button for "60 (PC)".
+
+* The IGT/points entry window will now visually show if an entered value is
+  invalid by changing the colour of the text box. (Internally, this works by
+  changing the colour whenever an error occurs, which is normally due to user
+  input.)
+
+* Resizing the IGT/points entry window will now correctly resize the text box as
+  well.
+
+v0.6 (2017-06-23, private beta):
+
+* (GitHub issue #4) The component now features adjustable settings from the
+  "Layout Settings" button, allowing it to support games other than Sonic 3. The
+  input method, countdown speed and IGT lookup table are now all customisable
+  and are saved with the layout.
+
+* (GitHub issue #5) As stated above, one of the new settings is the input
+  method; you can select between IGT input and points input. The points input
+  interface is still very bare-bones, but it works.
+
 v0.5.1 (2017-04-11):
 
 * (GitHub issue #6) Undoing a split made using the regular split key (rather

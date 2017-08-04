@@ -1,4 +1,20 @@
 <updates>
+    <update version="0.7">
+        <files>
+            <file path="Components/LiveSplit.RealTimeMinusBonuses.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                (GitHub issue #4) The component now features adjustable settings, so games other than Sonic 3 are supported! See the README online for more information: https://github.com/Sophira/LiveSplit.RealTimeMinusBonuses/blob/master/README.md
+            </change>
+            <change>
+                (GitHub issue #5) It is now possible to enter the points bonus directly if you so choose; you can adjust this in the settings.
+            </change>
+            <change>
+                The entry box will now indicate if an invalid value is entered when RETURN is hit.
+            </change>
+        </changelog>
+    </update>
     <update version="0.5.1">
         <files>
             <file path="Components/LiveSplit.RealTimeMinusBonuses.dll" status="changed"/>
