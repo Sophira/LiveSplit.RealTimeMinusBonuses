@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "10",
             "300"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "20",
             "200"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "30",
             "100"}, -1);
             this.tableLayoutSettings = new System.Windows.Forms.TableLayoutPanel();
@@ -46,14 +46,15 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.s_fpsNTSCFull = new System.Windows.Forms.RadioButton();
-            this.s_fpsPALFull = new System.Windows.Forms.RadioButton();
             this.s_PointsPerFrame = new System.Windows.Forms.NumericUpDown();
             this.s_fpsNTSCHalf = new System.Windows.Forms.RadioButton();
+            this.s_fpsNTSCFull = new System.Windows.Forms.RadioButton();
             this.s_fpsPALHalf = new System.Windows.Forms.RadioButton();
+            this.s_fpsPALFull = new System.Windows.Forms.RadioButton();
             this.s_fpsCustom = new System.Windows.Forms.RadioButton();
-            this.s_fpsCustomValue = new System.Windows.Forms.NumericUpDown();
             this.s_fpsPC = new System.Windows.Forms.RadioButton();
+            this.s_fpsGenSMS = new System.Windows.Forms.RadioButton();
+            this.s_fpsCustomValue = new System.Windows.Forms.NumericUpDown();
             this.groupIGTLookup = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.IGTRemoveRows = new System.Windows.Forms.Button();
@@ -171,7 +172,7 @@
             this.groupCountdownSpeed.Controls.Add(this.tableLayoutPanel3);
             this.groupCountdownSpeed.Location = new System.Drawing.Point(3, 64);
             this.groupCountdownSpeed.Name = "groupCountdownSpeed";
-            this.groupCountdownSpeed.Size = new System.Drawing.Size(599, 108);
+            this.groupCountdownSpeed.Size = new System.Drawing.Size(599, 129);
             this.groupCountdownSpeed.TabIndex = 200;
             this.groupCountdownSpeed.TabStop = false;
             this.groupCountdownSpeed.Text = "Countdown speed";
@@ -191,28 +192,30 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.s_fpsNTSCFull, 2, 1);
-            this.tableLayoutPanel3.Controls.Add(this.s_fpsPALFull, 3, 1);
             this.tableLayoutPanel3.Controls.Add(this.s_PointsPerFrame, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.s_fpsNTSCHalf, 2, 2);
-            this.tableLayoutPanel3.Controls.Add(this.s_fpsPALHalf, 3, 2);
-            this.tableLayoutPanel3.Controls.Add(this.s_fpsCustom, 4, 2);
-            this.tableLayoutPanel3.Controls.Add(this.s_fpsCustomValue, 5, 2);
-            this.tableLayoutPanel3.Controls.Add(this.s_fpsPC, 4, 1);
+            this.tableLayoutPanel3.Controls.Add(this.s_fpsNTSCHalf, 2, 3);
+            this.tableLayoutPanel3.Controls.Add(this.s_fpsNTSCFull, 2, 2);
+            this.tableLayoutPanel3.Controls.Add(this.s_fpsPALHalf, 3, 3);
+            this.tableLayoutPanel3.Controls.Add(this.s_fpsPALFull, 3, 2);
+            this.tableLayoutPanel3.Controls.Add(this.s_fpsCustom, 4, 3);
+            this.tableLayoutPanel3.Controls.Add(this.s_fpsPC, 4, 2);
+            this.tableLayoutPanel3.Controls.Add(this.s_fpsGenSMS, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.s_fpsCustomValue, 5, 3);
             this.tableLayoutPanel3.Location = new System.Drawing.Point(9, 21);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 3;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(581, 84);
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(581, 102);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 5);
+            this.label1.Location = new System.Drawing.Point(21, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(116, 17);
             this.label1.TabIndex = 0;
@@ -222,35 +225,11 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 33);
+            this.label2.Location = new System.Drawing.Point(3, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Frames per second:";
-            // 
-            // s_fpsNTSCFull
-            // 
-            this.s_fpsNTSCFull.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.s_fpsNTSCFull.AutoSize = true;
-            this.s_fpsNTSCFull.Location = new System.Drawing.Point(143, 31);
-            this.s_fpsNTSCFull.Name = "s_fpsNTSCFull";
-            this.s_fpsNTSCFull.Size = new System.Drawing.Size(136, 21);
-            this.s_fpsNTSCFull.TabIndex = 211;
-            this.s_fpsNTSCFull.Text = "59.94 (NTSC/60)";
-            this.s_fpsNTSCFull.UseVisualStyleBackColor = true;
-            this.s_fpsNTSCFull.CheckedChanged += new System.EventHandler(this.s_fpsNTSC_CheckedChanged);
-            // 
-            // s_fpsPALFull
-            // 
-            this.s_fpsPALFull.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.s_fpsPALFull.AutoSize = true;
-            this.s_fpsPALFull.Location = new System.Drawing.Point(285, 31);
-            this.s_fpsPALFull.Name = "s_fpsPALFull";
-            this.s_fpsPALFull.Size = new System.Drawing.Size(105, 21);
-            this.s_fpsPALFull.TabIndex = 213;
-            this.s_fpsPALFull.Text = "50 (PAL/50)";
-            this.s_fpsPALFull.UseVisualStyleBackColor = true;
-            this.s_fpsPALFull.CheckedChanged += new System.EventHandler(this.s_fpsPAL_CheckedChanged);
             // 
             // s_PointsPerFrame
             // 
@@ -276,20 +255,32 @@
             this.s_fpsNTSCHalf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.s_fpsNTSCHalf.AutoSize = true;
-            this.s_fpsNTSCHalf.Location = new System.Drawing.Point(143, 59);
+            this.s_fpsNTSCHalf.Location = new System.Drawing.Point(143, 78);
             this.s_fpsNTSCHalf.Name = "s_fpsNTSCHalf";
-            this.s_fpsNTSCHalf.Size = new System.Drawing.Size(136, 21);
+            this.s_fpsNTSCHalf.Size = new System.Drawing.Size(148, 21);
             this.s_fpsNTSCHalf.TabIndex = 212;
             this.s_fpsNTSCHalf.Text = "29.97 (NTSC/30)";
             this.s_fpsNTSCHalf.UseVisualStyleBackColor = true;
             this.s_fpsNTSCHalf.CheckedChanged += new System.EventHandler(this.s_fpsNTSCHalf_CheckedChanged);
+            // 
+            // s_fpsNTSCFull
+            // 
+            this.s_fpsNTSCFull.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.s_fpsNTSCFull.AutoSize = true;
+            this.s_fpsNTSCFull.Location = new System.Drawing.Point(143, 53);
+            this.s_fpsNTSCFull.Name = "s_fpsNTSCFull";
+            this.s_fpsNTSCFull.Size = new System.Drawing.Size(148, 19);
+            this.s_fpsNTSCFull.TabIndex = 211;
+            this.s_fpsNTSCFull.Text = "59.94 (NTSC/60)";
+            this.s_fpsNTSCFull.UseVisualStyleBackColor = true;
+            this.s_fpsNTSCFull.CheckedChanged += new System.EventHandler(this.s_fpsNTSC_CheckedChanged);
             // 
             // s_fpsPALHalf
             // 
             this.s_fpsPALHalf.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.s_fpsPALHalf.AutoSize = true;
-            this.s_fpsPALHalf.Location = new System.Drawing.Point(285, 59);
+            this.s_fpsPALHalf.Location = new System.Drawing.Point(297, 78);
             this.s_fpsPALHalf.Name = "s_fpsPALHalf";
             this.s_fpsPALHalf.Size = new System.Drawing.Size(105, 21);
             this.s_fpsPALHalf.TabIndex = 214;
@@ -297,17 +288,53 @@
             this.s_fpsPALHalf.UseVisualStyleBackColor = true;
             this.s_fpsPALHalf.CheckedChanged += new System.EventHandler(this.s_fpsPALHalf_CheckedChanged);
             // 
+            // s_fpsPALFull
+            // 
+            this.s_fpsPALFull.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.s_fpsPALFull.AutoSize = true;
+            this.s_fpsPALFull.Location = new System.Drawing.Point(297, 53);
+            this.s_fpsPALFull.Name = "s_fpsPALFull";
+            this.s_fpsPALFull.Size = new System.Drawing.Size(105, 19);
+            this.s_fpsPALFull.TabIndex = 213;
+            this.s_fpsPALFull.Text = "50 (PAL/50)";
+            this.s_fpsPALFull.UseVisualStyleBackColor = true;
+            this.s_fpsPALFull.CheckedChanged += new System.EventHandler(this.s_fpsPAL_CheckedChanged);
+            // 
             // s_fpsCustom
             // 
             this.s_fpsCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.s_fpsCustom.AutoSize = true;
-            this.s_fpsCustom.Location = new System.Drawing.Point(396, 59);
+            this.s_fpsCustom.Location = new System.Drawing.Point(408, 78);
             this.s_fpsCustom.Name = "s_fpsCustom";
             this.s_fpsCustom.Size = new System.Drawing.Size(80, 21);
             this.s_fpsCustom.TabIndex = 215;
             this.s_fpsCustom.Text = "Custom:";
             this.s_fpsCustom.UseVisualStyleBackColor = true;
             this.s_fpsCustom.CheckedChanged += new System.EventHandler(this.s_fpsCustom_CheckedChanged);
+            // 
+            // s_fpsPC
+            // 
+            this.s_fpsPC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.s_fpsPC.AutoSize = true;
+            this.s_fpsPC.Location = new System.Drawing.Point(408, 53);
+            this.s_fpsPC.Name = "s_fpsPC";
+            this.s_fpsPC.Size = new System.Drawing.Size(80, 19);
+            this.s_fpsPC.TabIndex = 217;
+            this.s_fpsPC.Text = "60 (PC)";
+            this.s_fpsPC.UseVisualStyleBackColor = true;
+            this.s_fpsPC.CheckedChanged += new System.EventHandler(this.s_fpsPC_CheckedChanged);
+            // 
+            // s_fpsGenSMS
+            // 
+            this.s_fpsGenSMS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.s_fpsGenSMS.AutoSize = true;
+            this.s_fpsGenSMS.Location = new System.Drawing.Point(143, 28);
+            this.s_fpsGenSMS.Name = "s_fpsGenSMS";
+            this.s_fpsGenSMS.Size = new System.Drawing.Size(148, 19);
+            this.s_fpsGenSMS.TabIndex = 218;
+            this.s_fpsGenSMS.Text = "59.9228 (SG/SMS)";
+            this.s_fpsGenSMS.UseVisualStyleBackColor = true;
+            this.s_fpsGenSMS.CheckedChanged += new System.EventHandler(this.s_fpsGenSMS_CheckedChanged);
             // 
             // s_fpsCustomValue
             // 
@@ -318,28 +345,16 @@
             0,
             0,
             0});
-            this.s_fpsCustomValue.Location = new System.Drawing.Point(482, 59);
+            this.s_fpsCustomValue.Location = new System.Drawing.Point(494, 78);
             this.s_fpsCustomValue.Maximum = new decimal(new int[] {
             -1,
             0,
             0,
             0});
             this.s_fpsCustomValue.Name = "s_fpsCustomValue";
-            this.s_fpsCustomValue.Size = new System.Drawing.Size(96, 22);
+            this.s_fpsCustomValue.Size = new System.Drawing.Size(84, 22);
             this.s_fpsCustomValue.TabIndex = 216;
             this.s_fpsCustomValue.ValueChanged += new System.EventHandler(this.s_fpsCustomValue_ValueChanged);
-            // 
-            // s_fpsPC
-            // 
-            this.s_fpsPC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.s_fpsPC.AutoSize = true;
-            this.s_fpsPC.Location = new System.Drawing.Point(396, 31);
-            this.s_fpsPC.Name = "s_fpsPC";
-            this.s_fpsPC.Size = new System.Drawing.Size(80, 21);
-            this.s_fpsPC.TabIndex = 217;
-            this.s_fpsPC.Text = "60 (PC)";
-            this.s_fpsPC.UseVisualStyleBackColor = true;
-            this.s_fpsPC.CheckedChanged += new System.EventHandler(this.s_fpsPC_CheckedChanged);
             // 
             // groupIGTLookup
             // 
@@ -347,7 +362,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupIGTLookup.Controls.Add(this.tableLayoutPanel4);
-            this.groupIGTLookup.Location = new System.Drawing.Point(3, 239);
+            this.groupIGTLookup.Location = new System.Drawing.Point(3, 260);
             this.groupIGTLookup.Name = "groupIGTLookup";
             this.groupIGTLookup.Size = new System.Drawing.Size(599, 247);
             this.groupIGTLookup.TabIndex = 300;
@@ -401,11 +416,11 @@
             this.s_LookupTable.GridLines = true;
             this.s_LookupTable.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.s_LookupTable.HideSelection = false;
-            listViewItem7.StateImageIndex = 0;
+            listViewItem1.StateImageIndex = 0;
             this.s_LookupTable.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem7,
-            listViewItem8,
-            listViewItem9});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3});
             this.s_LookupTable.Location = new System.Drawing.Point(3, 3);
             this.s_LookupTable.Name = "s_LookupTable";
             this.tableLayoutPanel4.SetRowSpan(this.s_LookupTable, 2);
@@ -490,7 +505,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 489);
+            this.label4.Location = new System.Drawing.Point(3, 510);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 0, 3, 3);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(466, 17);
@@ -500,7 +515,7 @@
             // linkReadme
             // 
             this.linkReadme.AutoSize = true;
-            this.linkReadme.Location = new System.Drawing.Point(3, 509);
+            this.linkReadme.Location = new System.Drawing.Point(3, 530);
             this.linkReadme.Name = "linkReadme";
             this.linkReadme.Size = new System.Drawing.Size(549, 17);
             this.linkReadme.TabIndex = 231;
@@ -514,7 +529,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupPointsEntry.Controls.Add(this.tableLayoutPanel5);
-            this.groupPointsEntry.Location = new System.Drawing.Point(3, 178);
+            this.groupPointsEntry.Location = new System.Drawing.Point(3, 199);
             this.groupPointsEntry.Name = "groupPointsEntry";
             this.groupPointsEntry.Size = new System.Drawing.Size(599, 55);
             this.groupPointsEntry.TabIndex = 301;
@@ -645,5 +660,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown s_PointsMultiplicationFactor;
+        private System.Windows.Forms.RadioButton s_fpsGenSMS;
     }
 }

@@ -1,6 +1,13 @@
 Changelog for RTA-TB
 ====================
 
+v0.7.1 (2017-08-04):
+
+* It has been pointed out that the default FPS value of 59.94Hz is not quite
+  correct for running Sonic 3 on the Sega Genesis. A new radio button has been
+  added for 59.9228Hz and this is now the new default. This will not affect
+  layouts that have already been saved.
+
 v0.7 (2017-08-04):
 
 * (GitHub issue #5) When entering points bonuses, a new setting now exists to

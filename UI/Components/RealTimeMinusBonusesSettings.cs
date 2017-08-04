@@ -24,6 +24,7 @@ namespace LiveSplit.UI.Components
         protected const double FPS_PALHALF = 25;
 
         protected const double FPS_PC = 60;
+        protected const double FPS_GENSMS = 59.9228;
 
         private IButtonControl parentDefault;
 
@@ -34,7 +35,7 @@ namespace LiveSplit.UI.Components
             // initialise settings to Sonic 3
             InputMethod = RealTimeMinusBonusesComponent.InputMethodEnum.IngameTime;
             PointsPerFrame = 100;
-            FramesPerSecond = FPS_NTSCFULL;
+            FramesPerSecond = FPS_GENSMS;
             PointsMultiplicationFactor = 1;
 
             IGTLookup = new SortedDictionary<int, int>();
@@ -57,7 +58,7 @@ namespace LiveSplit.UI.Components
             var element = (XmlElement)node;
             InputMethod = SettingsHelper.ParseEnum<RealTimeMinusBonusesComponent.InputMethodEnum>(element["InputMethod"], RealTimeMinusBonusesComponent.InputMethodEnum.IngameTime);
             PointsPerFrame = SettingsHelper.ParseInt(element["PointsPerFrame"], 100);
-            FramesPerSecond = SettingsHelper.ParseDouble(element["FramesPerSecond"], FPS_NTSCFULL);
+            FramesPerSecond = SettingsHelper.ParseDouble(element["FramesPerSecond"], FPS_GENSMS);
             PointsMultiplicationFactor = SettingsHelper.ParseInt(element["PointsMultiplicationFactor"], 1);
             var lookupElement = element["IGTLookup"];
             if (lookupElement != null)
@@ -167,6 +168,8 @@ namespace LiveSplit.UI.Components
                 s_fpsPALHalf.Checked = true;
             else if (FramesPerSecond == FPS_PC)
                 s_fpsPC.Checked = true;
+            else if (FramesPerSecond == FPS_GENSMS)
+                s_fpsGenSMS.Checked = true;
             else
                 s_fpsCustom.Checked = true;
             UpdateFPS();
@@ -214,6 +217,8 @@ namespace LiveSplit.UI.Components
                 FramesPerSecond = FPS_PALHALF;
             else if (s_fpsPC.Checked)
                 FramesPerSecond = FPS_PC;
+            else if (s_fpsGenSMS.Checked)
+                FramesPerSecond = FPS_GENSMS;
             else
                 FramesPerSecond = (double)s_fpsCustomValue.Value;
         }
@@ -234,6 +239,11 @@ namespace LiveSplit.UI.Components
         }
 
         private void s_fpsPC_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateFPS();
+        }
+
+        private void s_fpsGenSMS_CheckedChanged(object sender, EventArgs e)
         {
             UpdateFPS();
         }

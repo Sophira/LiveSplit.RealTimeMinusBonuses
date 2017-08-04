@@ -1,4 +1,14 @@
 <updates>
+    <update version="0.7.1">
+        <files>
+            <file path="Components/LiveSplit.RealTimeMinusBonuses.dll" status="changed"/>
+        </files>
+        <changelog>
+            <change>
+                The default FPS setting is now 59.9228Hz, to correspond with the framerate of the Sega Genesis/Sega Master System, and a new radio button has been added for this. This does not affect layouts that have already been saved.
+            </change>
+        </changelog>
+    </update>
     <update version="0.7">
         <files>
             <file path="Components/LiveSplit.RealTimeMinusBonuses.dll" status="changed"/>

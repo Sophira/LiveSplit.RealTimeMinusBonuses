@@ -1,4 +1,4 @@
-Real Time Minus Bonuses v0.7 for LiveSplit [RTA-TB]
+Real Time Minus Bonuses v0.7.1 for LiveSplit [RTA-TB]
 =====================================================
 
 **Binary Download (latest version):** [LiveSplit.RealTimeMinusBonuses.dll](https://github.com/Sophira/LiveSplit.RealTimeMinusBonuses/raw/master/Components/LiveSplit.RealTimeMinusBonuses.dll)
