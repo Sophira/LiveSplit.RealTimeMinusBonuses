@@ -1,7 +1,7 @@
 Changelog for RTA-TB
 ====================
 
-v0.7 (tba):
+v0.7 (2017-08-04):
 
 * (GitHub issue #5) When entering points bonuses, a new setting now exists to
   multiply all entered points values during a run by a certain number, such as
