@@ -83,7 +83,8 @@ The settings available are:
    setting will differ depending on a number of factors, including whether you
    run on console or emulator, which emulator is used, etc.)
 
-   The default values are 100 points per frame and 59.94 frames per second.
+   The default values are 100 points per frame and 59.9228 frames per second.
+   (This value matches the frame rate of the Genesis and Sega Master System.)
 
 * Points Entry options: Only one setting is available at the moment, "Multiply
    entered values by". This allows you to save on typing when inputting points
