@@ -121,12 +121,12 @@ this and verify the time recorded by the plugin.
 (See [issue #8](https://github.com/Sophira/LiveSplit.RealTimeMinusBonuses/issues/8)
 for more information.)
 
-I am not a speedrunner myself, but the plugin has by now been tested by several
-people and I am pretty confident that it is accurate (excepting the issue linked
-above). Still, problems can occur; if you find that a time recorded by the
-plugin is incorrect, or there are any other bugs - or even if you just want to
-give feedback - please do get in touch! That said, before filing a bug, please
-[check the Issues list](https://github.com/Sophira/LiveSplit.RealTimeMinusBonuses/issues)
+I am not a Sonic speedrunner myself, but the plugin has by now been tested by
+several people and I am pretty confident that it is accurate (excepting the
+issue linked above). Still, problems can occur; if you find that a time recorded
+by the plugin is incorrect, or there are any other bugs - or even if you just
+want to give feedback - please do get in touch! That said, before filing a bug,
+please [check the Issues list](https://github.com/Sophira/LiveSplit.RealTimeMinusBonuses/issues)
 to make sure that your bug hasn't already been reported.
 
 For a list of changes in this component over time, see the "CHANGES.md" file, or
